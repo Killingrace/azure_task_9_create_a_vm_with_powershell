@@ -23,7 +23,7 @@ $vmName = "matebox"
 $vmSecurityType = "Standard"
 
 # VM OS
-$offer = "Ubuntu2204"
+$offer = "ubuntu-22_04-lts"
 $publisher = "canonical"
 $sku = "server-gen1"
 $version = "latest"
@@ -63,23 +63,3 @@ $vm = Set-AzVMSourceImage -VM $vm -PublisherName $publisher -Offer $offer -Skus 
 $vm = Set-AzVMBootDiagnostic -VM $vm -Disable
 
 New-AzVM -VM $vm -ResourceGroupName $resourceGroupName -Location $location
-
-
-
-ssh azureuser@matevm.polandcentral.cloudapp.azure.com
-
-sudo mkdir /app
-sudo chown $USER:$USER /app
-
-exit
-
-scp -r app/* azureuser@matevm.polandcentral.cloudapp.azure.com:/app
-
-ssh azureuser@matevm.polandcentral.cloudapp.azure.com
-
-sudo apt install python3-pip
-cd /app
-sudo mv todoapp.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl start todoapp
-sudo systemctl enable todoapp
