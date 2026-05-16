@@ -23,8 +23,8 @@ $vmName = "matebox"
 $vmSecurityType = "Standard"
 
 # VM OS
-$offer = "ubuntu-22_04-lts"
 $publisher = "canonical"
+$offer = "ubuntu-22_04-lts"
 $sku = "server-gen1"
 $version = "latest"
 
