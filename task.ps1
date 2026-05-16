@@ -66,16 +66,20 @@ New-AzVM -VM $vm -ResourceGroupName $resourceGroupName -Location $location
 
 
 
-# ssh azureuser@matevm.polandcentral.cloudapp.azure.com
+ssh azureuser@matevm.polandcentral.cloudapp.azure.com
 
-# sudo mkdir /app
-# sudo chown $USER:$USER /app
+sudo mkdir /app
+sudo chown $USER:$USER /app
 
-# scp -r app/* azureuser@matevm.polandcentral.cloudapp.azure.com:/app
+exit
 
-# sudo apt install python3-pip
-# cd /app
-# sudo mv todoapp.service /etc/systemd/system/
-# sudo systemctl daemon-reload
-# sudo systemctl start todoapp
-# sudo systemctl enable todoapp
+scp -r app/* azureuser@matevm.polandcentral.cloudapp.azure.com:/app
+
+ssh azureuser@matevm.polandcentral.cloudapp.azure.com
+
+sudo apt install python3-pip
+cd /app
+sudo mv todoapp.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl start todoapp
+sudo systemctl enable todoapp
